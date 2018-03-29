@@ -164,9 +164,29 @@ function TapeEquilibrium(A) {
 
 }
 
-function FrogJmp() {
+function FrogJmp(X,Y,D) {
+    // var count=0;
+    // while(X<Y){
+    //     Y-=D;
+    //     count++
+    // }
+    // return count
+    var count=0;
+    function inner(X,Y,D) {
+
+        if (X >= Y) {
+            return count;
+        }
+
+        else {
+            X+=D;
+            count++
+            return inner(X,Y,D)
+        }
+    }
+    return inner(X,Y,D)
 
 }
-console.log(OddOccurrencesInArray([9,3,9,3,9,7,9]))
+console.log(FrogJmp(10,85,30))
 
 

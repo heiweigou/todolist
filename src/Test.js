@@ -67,38 +67,38 @@ class Test extends React.Component {
         )
 
 
-    }
+    };
 
     editHandler = (index) => {
         const item = this.state.data;
         item[index].isEdit = true;
         this.setState({data: item});
         console.log('edit mode is on', this.state.data[index]);
-        editItem = this.state.data[index]
+        editItem = this.state.data[index];
         editItemIndex = index
-    }
+    };
 
     editItemHandler = (index, data) => {
         const item = this.state.data;
         item.splice(index, 1, data);
-        console.log(data)
+        console.log(data);
         this.setState({data:item})
-    }
+    };
 
 
     deleteHandler = (index) => {
         const item = this.state.data;
-        item.splice(index, 1)
+        item.splice(index, 1);
         this.setState({
             data: item
         })
-    }
+    };
     doneHandler = (index) => {
         const item = this.state.data;
         item[index].isDone = !item[index].isDone;
         this.setState({data: item})
 
-    }
+    };
 
     addHandler = (item) => {
         const list = this.state.data;
@@ -106,7 +106,7 @@ class Test extends React.Component {
         this.setState({
             data: list
         })
-    }
+    };
 
 
     render() {
@@ -115,7 +115,7 @@ class Test extends React.Component {
                 {this.Table()}
 
                 {this.state.data.length > 0 && editItem !== null && editItem.isEdit ?
-                    <Type onAdd={this.addHandler} prevData={editItem} editItemHandler={this.editItemHandler}/> :
+                    <Type prevData={editItem} editItemHandler={this.editItemHandler}/> :
                     <Type onAdd={this.addHandler}/>}
 
 
@@ -205,13 +205,11 @@ class Type extends React.Component {
         return this.handlerAdd
     }
 
-    componentWillMount() {
+    componentWillUpdate() {
         if (this.props.prevData && this.props.prevData.isEdit) {
-            this.setState({
-                ...this.prevData
-            })
+
+            console.log('did')
         }
-        console.log('did')
     }
 
     render() {
@@ -221,11 +219,12 @@ class Type extends React.Component {
                 <div>
                     <form>
                         <div className="form-group">
+
                             <label>Content</label>
                             <input type="text" className='form-control' name="content" onChange={this.handlerInput}
                                    value={this.state.content}
                                 //  ref={input=>this.input=input}
-                                // defaultValue={this.props.prevData && this.props.prevData.isEdit ? this.props.prevData.content : ''}
+
                                    onBlur={this.handlerCheck}/>
                         </div>
                         <div className="form-group">

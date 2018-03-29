@@ -8,7 +8,7 @@ class TestB extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            content:''
+            content:'123'
         }
     }
 
@@ -21,7 +21,7 @@ class TestB extends React.Component{
         return(
 
         <div>
-            <input onChange={this.handle} ref={input=>this.input=input} defaultValue={123}/>
+            <input onChange={this.handle} value={this.state.content}/>
             <input value={this.state.content} />
         </div>
             )

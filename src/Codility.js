@@ -166,27 +166,52 @@ function TapeEquilibrium(A) {
 
 function FrogJmp(X,Y,D) {
     // var count=0;
+    //
+    //
     // while(X<Y){
     //     Y-=D;
     //     count++
     // }
     // return count
-    var count=0;
-    function inner(X,Y,D) {
 
-        if (X >= Y) {
-            return count;
-        }
 
-        else {
-            X+=D;
-            count++
-            return inner(X,Y,D)
-        }
-    }
-    return inner(X,Y,D)
+    var count=Math.ceil((Y-X)/D);
+    return count;
+
+
+    // var count=0;
+    // function inner(X,Y,D) {
+    //
+    //     if (X >= Y) {
+    //         return count;
+    //     }
+    //
+    //     else {
+    //         X+=D;
+    //         count++
+    //         return inner(X,Y,D)
+    //     }
+    // }
+    // return inner(X,Y,D)
 
 }
-console.log(FrogJmp(10,85,30))
+
+function PermMissingElem(A) {
+
+    var total=0;
+    if(A.length===0)
+        return 1
+
+    for(var i=1;i<A.length+2;i++){
+        total+=i
+    }
+
+    var curVal=A.reduce(function (acc,cur) {
+        return acc+cur
+    })
+
+    return total-curVal
+}
+console.log(PermMissingElem([2]))
 
 
